@@ -35,15 +35,13 @@ export default {
   methods: {
     ...mapActions(['setTareas']),
     procesarFormulario(){
-      console.log(this.tarea)
       if(this.tarea.nombre.trim() === ""){
-        console.log('Campo vacío');
-        return
+        alert('Campo vacío');
+        return;
       }
 
       // Generar ID
       this.tarea.id = shortid.generate();
-      console.log(this.tarea.id);
       
       // envian los datos
       this.setTareas(this.tarea);

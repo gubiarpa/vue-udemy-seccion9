@@ -17,16 +17,22 @@
                 <td>{{ tarea.categorias.join(' | ') }}</td>
                 <td>{{ tarea.estado }}</td>
                 <td>{{ tarea.numero }}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" @click="deleteTarea(tarea.id)">Eliminar</button>
+                </td>
             </tr>
         </tbody>
     </table>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
     computed: {
         ...mapState(['tareas'])
-    }
+    },
+    methods: {
+        ...mapActions(['deleteTarea'])
+    },
 }
 </script>
