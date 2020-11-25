@@ -17,7 +17,10 @@ export default createStore({
     },
     eliminar(state, payload) {
       state.tareas = state.tareas.filter(item => item.id !== payload)
-    }
+    },
+    tarea(state, payload) {
+      state.tarea = state.tareas.find(item => item.id === payload);
+    },
   },
   actions: {
     setTareas({ commit }, tarea) {
@@ -25,7 +28,10 @@ export default createStore({
     },
     deleteTarea({ commit }, id) {
       commit('eliminar', id);
-    }
+    },
+    setTarea({ commit }, id) {
+      commit('tarea', id);
+    },
   },
   modules: {
   }
