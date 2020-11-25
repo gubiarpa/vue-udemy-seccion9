@@ -18,7 +18,8 @@
                 <td>{{ tarea.estado }}</td>
                 <td>{{ tarea.numero }}</td>
                 <td>
-                    <button class="btn btn-danger btn-sm" @click="deleteTarea(tarea.id)">Eliminar</button>
+                    <router-link class="btn btn-warning btn-sm" :to="{ name: 'Editar', params: { id: tarea.id } }">Editar</router-link>
+                    <button class="btn btn-danger btn-sm ml-2" @click="deleteTarea(tarea.id)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
