@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import router from "../router";
 
 export default createStore({
   state: {
@@ -19,10 +20,16 @@ export default createStore({
       state.tareas = state.tareas.filter(item => item.id !== payload)
     },
     tarea(state, payload) {
+      if (!state.tareas.find(item => item.id === payload)) {
+        router.push('/');
+        return;
+      }
+
       state.tarea = state.tareas.find(item => item.id === payload);
     },
     update(state, payload) {
       state.tareas = state.tareas.map(item => item.id === payload.id ? payload : item);
+      router.push('/');
     },
   },
   actions: {
