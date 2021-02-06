@@ -29,7 +29,6 @@ export default createStore({
         router.push('/');
         return;
       }
-      
       state.tarea = state.tareas.find(item => item.id === payload);
     },
     update(state, payload) {
