@@ -35,8 +35,18 @@ export default createStore({
     },
   },
   actions: {
-    cargarLocalStorage({ commit }) {
-      
+    async cargarLocalStorage({ commit }) {
+      try {
+        const res = await fetch(`https://celudar-v0-default-rtdb.firebaseio.com/tareas.json`);
+        const dataDB = await res.json();
+        const tareasLista = [];
+        for (const id in dataDB) {
+          tareasLista.push(dataDB[id]);
+        }
+        commit('cargar', tareasLista);
+      } catch (error) {
+        console.error(error);
+      }
     },
     async setTareas({ commit }, tarea) {
       try {
