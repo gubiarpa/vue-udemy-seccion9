@@ -51,11 +51,14 @@ export default createStore({
           })
         });
         const userDB = await res.json();
-        console.log(userDB);
+        if (userDB.error) {
+          console.error(userDB.error);
+          return;
+        }
+        commit('setUser', userDB);
       } catch (error) {
         console.error(error);
       }
-      commit('setUser', usuario);
     },
     async cargarLocalStorage({ commit }) {
       try {
