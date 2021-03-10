@@ -62,14 +62,7 @@ export default createStore({
       }
       commit('set', tarea);
     },
-    async deleteTarea({ commit }, id) {
-      try {
-        await fetch(`https://celudar-v0-default-rtdb.firebaseio.com/tareas/${ id }.json`, {
-          method: 'DELETE'
-        });
-      } catch (error) {
-        console.error(error);
-      }
+    deleteTarea({ commit }, id) {
       commit('eliminar', id);
     },
     setTarea({ commit }, id) {
