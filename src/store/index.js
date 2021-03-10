@@ -40,21 +40,7 @@ export default createStore({
   },
   actions: {
     async registrarUsuario({ commit }, usuario) {
-      try {
-        const apiKey = 'AIzaSyDLoykkfhLqHMrR1_UbROCYxBwxJY8SJJc'; // Firebase
-        const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${ apiKey }`, {
-          method: 'POST',
-          body: JSON.stringify({
-            email: usuario.email,
-            password: usuario.password,
-            returnSecurityToken: true
-          })
-        });
-        const userDB = await res.json();
-        console.log(userDB);
-      } catch (error) {
-        console.error(error);
-      }
+      console.log(usuario);
       commit('setUser', usuario);
     },
     async cargarLocalStorage({ commit }) {
