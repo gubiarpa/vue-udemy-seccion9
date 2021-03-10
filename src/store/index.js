@@ -3,7 +3,6 @@ import router from "../router";
 
 export default createStore({
   state: {
-    apiKey: 'AIzaSyDLoykkfhLqHMrR1_UbROCYxBwxJY8SJJc',
     tareas:[],
     tarea: {
       id: '',
@@ -40,10 +39,10 @@ export default createStore({
     },
   },
   actions: {
-    async registrarUsuario({ commit, state }, usuario) {
+    async registrarUsuario({ commit }, usuario) {
       try {
-        // const apiKey = 'AIzaSyDLoykkfhLqHMrR1_UbROCYxBwxJY8SJJc'; // Firebase
-        const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${ state.apiKey }`, {
+        const apiKey = 'AIzaSyDLoykkfhLqHMrR1_UbROCYxBwxJY8SJJc'; // Firebase
+        const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${ apiKey }`, {
           method: 'POST',
           body: JSON.stringify({
             email: usuario.email,
@@ -57,28 +56,6 @@ export default createStore({
           return;
         }
         commit('setUser', userDB);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    async ingresarUsuario({ commit, state }, usuario) {
-      try {
-        // const apiKey = 'AIzaSyDLoykkfhLqHMrR1_UbROCYxBwxJY8SJJc'; // Firebase
-        const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${ state.apiKey }`, {
-          method: 'POST',
-          body: JSON.stringify({
-            email: usuario.email,
-            password: usuario.password,
-            returnSecurityToken: true
-          })
-        });
-        const userDB = await res.json();
-        if (userDB.error) {
-          console.error(userDB.error);
-          return;
-        }
-        commit('setUser', userDB);
-        router.push('/');
       } catch (error) {
         console.error(error);
       }

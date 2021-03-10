@@ -21,11 +21,6 @@ const routes = [
     name: 'Registro',
     component: () => import('../views/Registro')
   },
-  {
-    path: '/ingreso',
-    name: 'Ingreso',
-    component: () => import('../views/Ingreso')
-  },
 ]
 
 const router = createRouter({
