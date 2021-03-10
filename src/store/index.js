@@ -57,6 +57,9 @@ export default createStore({
           },
           body: JSON.stringify(tarea)
         });
+
+        const dataDB = await res.json();
+        console.log(dataDB);
       } catch (error) {
         console.error(error);
       }
@@ -68,18 +71,7 @@ export default createStore({
     setTarea({ commit }, id) {
       commit('tarea', id);
     },
-    async updateTarea({ commit }, tarea) {
-      try {
-        const res = await fetch(`https://celudar-v0-default-rtdb.firebaseio.com/tareas/${ tarea.id }.json`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type' : 'application/json'
-          },
-          body: JSON.stringify(tarea)
-        });
-      } catch (error) {
-        console.error(error);
-      }
+    updateTarea({ commit }, tarea) {
       commit('update', tarea);
     },
   },
