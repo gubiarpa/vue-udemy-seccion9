@@ -38,21 +38,7 @@ export default createStore({
     cargarLocalStorage({ commit }) {
       
     },
-    async setTareas({ commit }, tarea) {
-      try {
-        const res = await fetch(`https://celudar-v0-default-rtdb.firebaseio.com/tareas/${ tarea.id }.json`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type' : 'application/json'
-          },
-          body: JSON.stringify(tarea)
-        });
-
-        const dataDB = await res.json();
-        console.log(dataDB);
-      } catch (error) {
-        console.error(error);
-      }
+    setTareas({ commit }, tarea) {
       commit('set', tarea);
     },
     deleteTarea({ commit }, id) {
