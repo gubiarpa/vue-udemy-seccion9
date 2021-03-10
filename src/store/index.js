@@ -10,13 +10,9 @@ export default createStore({
       categorias: [],
       estado: '',
       numero: 0
-    },
-    user: null,
+    }
   },
   mutations: {
-    setUser(state, payload) {
-      state.user = payload;
-    },
     cargar(state, payload) {
       state.tareas = payload;
     },
@@ -39,10 +35,6 @@ export default createStore({
     },
   },
   actions: {
-    async registrarUsuario({ commit }, usuario) {
-      console.log(usuario);
-      commit('setUser', usuario);
-    },
     async cargarLocalStorage({ commit }) {
       try {
         const res = await fetch(`https://celudar-v0-default-rtdb.firebaseio.com/tareas.json`);

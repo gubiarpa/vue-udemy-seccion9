@@ -16,11 +16,6 @@ const routes = [
     name: 'Editar',
     component: () => import('../views/Editar')
   },
-  {
-    path: '/registro',
-    name: 'Registro',
-    component: () => import('../views/Registro')
-  },
 ]
 
 const router = createRouter({
